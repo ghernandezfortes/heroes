@@ -1,3 +1,61 @@
-<p>hero-details works!</p>
+
+<div class="content">
+
+  <div class="header-edit-hero">
+    <h1> {{ title }} </h1>
+  </div>
+
+  <div class="header-edit-content">
+
+    <div class="heroes-list-loading" *ngIf="loading">
+      <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <div class="hero-detail" *ngIf="!loading">
+
+      <form [formGroup]="heroForm" class="hero-form">
+        <div class="hero-form__content">
+          <div class="hero-form_field">
+            <mat-form-field class="hero-form-full-width">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="name">
+            </mat-form-field>
+          </div>
+
+          <div class="hero-form_field">
+            <mat-form-field class="hero-form-full-width">
+              <mat-label>Alias</mat-label>
+              <input matInput formControlName="alias">
+            </mat-form-field>
+          </div>
+
+          <div class="hero-form_field">
+            <mat-form-field class="hero-form-full-width">
+              <mat-label>Powers</mat-label>
+              <input matInput formControlName="powers">
+            </mat-form-field>
+          </div>
+
+          <div class="hero-form_field">
+            <mat-form-field class="hero-form-full-width">
+              <mat-label>Edad</mat-label>
+              <input matInput formControlName="age">
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="hero-form__actions">
+          <button mat-raised-button type="submit" routerLink="/heroes">Volver</button>
+          <button mat-raised-button (click)="onAddHero()" *ngIf="IsNewHero" color="primary" type="submit" [disabled]="heroForm.invalid">Crear</button>
+          <button mat-raised-button (click)="onEditHero()" *ngIf="!IsNewHero" color="primary" type="submit" [disabled]="heroForm.invalid">Guardar</button>
+          <button mat-raised-button (click)="onDeleteHero()" *ngIf="!IsNewHero" color="warn" >Borrar</button>
+        </div>
+      </form>
+
+
+    </div>
+
+
+
 
 

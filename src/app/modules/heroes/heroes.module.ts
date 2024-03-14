@@ -6,6 +6,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 
@@ -20,7 +26,14 @@ import { HeroDetailsComponent } from './pages/hero-details/hero-details.componen
     HeroesRoutingModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatDialogModule
+
+  ],
 })
 export class HeroesModule { }

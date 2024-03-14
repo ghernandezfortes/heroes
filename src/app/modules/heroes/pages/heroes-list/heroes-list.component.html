@@ -1,20 +1,48 @@
-<h1>Listado de héroes</h1>
-<div class="heroes-list">
-  <mat-card class="hero-card" *ngFor="let hero of heroesList">
-    <mat-card-header>
-      <mat-card-title> {{ hero.name }} ( {{ hero.age }} )</mat-card-title>
-      <mat-card-subtitle> {{ hero.alias }} </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p *ngFor="let power of hero.powers"> {{ power }} </p>
-    </mat-card-content>
-    <div class="footer-card">
-      <mat-card-actions>
-        <button mat-raised-button color="primary" routerLink="{{hero.id}}">Detalles</button>
-      </mat-card-actions>
+
+<div class="content">
+  <div class="header-heroes-list">
+    <h1>Listado de héroes</h1>
+    <div class="header-heroes-list__actions">
+      <button mat-raised-button color="primary" routerLink="new">Crear</button>
     </div>
-  </mat-card>
+  </div>
+  <div class="header-list-content">
+    <div class="filters">
+      <mat-form-field class="heroes-list-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput (ngModelChange)="onSearch($event)" [(ngModel)]="heroName">
+      </mat-form-field>
+    </div>
+    <div class="heroes-list-loading" *ngIf="loading">
+      <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="heroes-list"  *ngIf="!loading">
+      <mat-card  class="hero-card" *ngFor="let hero of heroesListFiltered">
+        <mat-card-header>
+          <mat-card-title> {{ hero.name | titlecase }} ( {{ hero.age }} )</mat-card-title>
+          <mat-card-subtitle> {{ hero.alias }} </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p> {{ hero.powers }} </p>
+        </mat-card-content>
+        <div class="footer-card">
+          <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="{{hero.id}}">Detalles</button>
+          </mat-card-actions>
+        </div>
+      </mat-card>
+    </div>
+
+
+  </div>
+
 </div>
+
+
+
+
+
+
 
 
 

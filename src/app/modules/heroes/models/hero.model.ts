@@ -4,7 +4,7 @@ export class HeroModel implements HeroInterface {
     id: number;
     name: string;
     alias: string;
-    powers: string[];
+    powers: string;
     age: number;
 
     constructor(heroInterface: HeroInterface) {

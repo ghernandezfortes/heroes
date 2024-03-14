@@ -14,29 +14,42 @@ import { HeroInterface } from '../../Interfaces/hero.interface';
 export class HeroesListComponent implements OnInit {
 
   public heroesList: HeroModel[] = [];
+  public heroesListFiltered: HeroModel[] = [];
   public loading: boolean = false;
+  public heroName: string = '';
+  private delayTimerEvent: any;
 
 
   constructor(private heroesService: HeroesService) {}
 
   ngOnInit(): void {
     this.getHeroes();
-
   }
 
+  public onSearch(name: any): void {
+
+    clearTimeout(this.delayTimerEvent);
+    this.setLoading(true)
+    this.delayTimerEvent = setTimeout(() => {
+      this.heroesListFiltered = this.heroesList.filter(hero => hero.name.toLowerCase().includes(name.toLowerCase()));
+      this.setLoading(false);
+    }, 500);
+  }
+
+
   private getHeroes(): void {
-
-    this.loading = true;
-
+    this.setLoading(true);
     lastValueFrom(this.heroesService.getHeroes())
       .then((data: HeroInterface[]) => {
-        this.heroesList = data.map(p => new HeroModel(p))
+        this.heroesList = data.map(p => new HeroModel(p));
+        this.heroesListFiltered = [...this.heroesList];
       })
-      .catch(e => {
-        console.log(e);
-      }).finally(() => {
-        this.loading = false;
-    });
+      .catch(e => console.log(e) )
+      .finally(() => this.setLoading(false));
+  }
+
+  private setLoading(status: boolean): void {
+    this.loading = status;
   }
 
 
