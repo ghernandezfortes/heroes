@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -32,7 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    SharedModule
 
   ],
 })

@@ -16,7 +16,7 @@
     <div class="heroes-list-loading" *ngIf="loading">
       <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
     </div>
-    <div class="heroes-list"  *ngIf="!loading">
+    <div class="heroes-list" *ngIf="!loading && heroesListFiltered.length > 0">
       <mat-card  class="hero-card" *ngFor="let hero of heroesListFiltered">
         <mat-card-header>
           <mat-card-title> {{ hero.name | titlecase }} ( {{ hero.age }} )</mat-card-title>
@@ -31,6 +31,9 @@
           </mat-card-actions>
         </div>
       </mat-card>
+    </div>
+    <div class="heroes-list" *ngIf="!loading && heroesListFiltered.length <= 0">
+      No se han encontrado resultados
     </div>
 
 

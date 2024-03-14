@@ -7,11 +7,14 @@ export class HeroModel implements HeroInterface {
     powers: string;
     age: number;
 
-    constructor(heroInterface: HeroInterface) {
+    constructor(heroInterface: HeroModel) {
       this.id = heroInterface.id;
       this.name = heroInterface.name;
       this.alias = heroInterface.alias;
       this.powers = heroInterface.powers;
       this.age = heroInterface.age;
     }
+
+
+
 }

@@ -6,7 +6,8 @@ import { HeroesService } from '../../services/heroes.service';
 import { HeroInterface } from '../../Interfaces/hero.interface';
 import { lastValueFrom } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-hero-details',
@@ -20,9 +21,6 @@ export class HeroDetailsComponent implements OnInit{
   public loading: boolean = false;
   public heroId: number = 0;
   public title: string = 'Crear héroe'
-
-
-
 
 
   get IsNewHero(): boolean {
@@ -39,7 +37,6 @@ export class HeroDetailsComponent implements OnInit{
 
   ngOnInit(): void {
     this.setIsNewHero();
-   // this.dialog.open()
   }
 
   public onAddHero(): void {
@@ -74,15 +71,31 @@ export class HeroDetailsComponent implements OnInit{
   }
 
   public onDeleteHero(): void {
-    lastValueFrom(this.heroesService.deleteHero(this.heroId))
-      .then(response => {
-        if (response !== undefined) {
-          this.ShowMessage("Héroe borrado correctamente", 2000);
-          this.returnListHeroes();
-        }
-      })
-      .catch(e => console.log(e))
-      .finally(() => this.SetLoading(false));
+
+    const dialogRef = this.CreateConfirmDialog();
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        lastValueFrom(this.heroesService.deleteHero(this.heroId))
+          .then(response => {
+            if (response !== undefined) {
+              this.ShowMessage("Héroe borrado correctamente", 2000);
+              this.returnListHeroes();
+            }
+          })
+          .catch(e => console.log(e))
+          .finally(() => this.SetLoading(false));
+      }
+    });
+  }
+
+
+
+  private CreateConfirmDialog(): MatDialogRef<ConfirmDialogComponent> {
+    return this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: { title: 'Confirmación', message: '¿Está seguro de que deseas borrar el héroe?' }
+    });
   }
 
 
@@ -118,7 +131,7 @@ export class HeroDetailsComponent implements OnInit{
 
   private SetHeroValues(hero: HeroInterface): void {
     this.heroForm = this.formBuilder.group({
-      name: [hero.name],
+      name: [hero.name.toUpperCase()],
       alias: [hero.alias],
       powers: [hero.powers],
       age: [hero.age],
@@ -142,7 +155,7 @@ export class HeroDetailsComponent implements OnInit{
 
 
   private returnListHeroes(): void {
-    this.router.navigate(['/heroes']);
+    this.router.navigate(['/heroes']).then();
   }
 
   private ShowMessage(message: string, duration: number):void {

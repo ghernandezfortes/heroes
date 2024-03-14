@@ -14,12 +14,12 @@ export class HeroesService {
       "id": 1,
       "name": "spiderman",
       "alias": "Hombre araña",
-      "powers": "Fuerza, agilidad, tela arañas",
+      "powers": "Fuerza, agilidad, tela-arañas",
       "age": 18
     },
     {
       "id": 2,
-      "name": "hulh",
+      "name": "hulk",
       "alias": "Hombre Verde",
       "powers": "Fuerza, agilidad, locura",
       "age": 18
