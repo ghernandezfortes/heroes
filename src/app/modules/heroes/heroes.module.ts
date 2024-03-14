@@ -5,13 +5,15 @@ import { HeroesListComponent } from './pages/heroes-list/heroes-list.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { HeroDetailsComponent } from './pages/hero-details/hero-details.component';
 
 
 
 
 @NgModule({
   declarations: [
-    HeroesListComponent
+    HeroesListComponent,
+    HeroDetailsComponent
   ],
   imports: [
     CommonModule,

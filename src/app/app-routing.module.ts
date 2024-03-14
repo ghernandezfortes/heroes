@@ -5,12 +5,12 @@ import {HeroesListComponent} from "./modules/heroes/pages/heroes-list/heroes-lis
 const routes: Routes = [
   {
     //TODO: arreglar esto del lazing loading
-    path: '',
+    path: 'heroes',
     loadChildren: () => import('./modules/heroes/heroes.module').then(m => m.HeroesModule),
   },
   {
     path: '**',
-    redirectTo: '/'
+    redirectTo: '/heroes'
   }
 ];
 

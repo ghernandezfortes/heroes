@@ -1,16 +1,16 @@
 <h1>Listado de héroes</h1>
 <div class="heroes-list">
-  <mat-card class="example-card">
+  <mat-card class="hero-card" *ngFor="let hero of heroesList">
     <mat-card-header>
-      <mat-card-title>Spiderman</mat-card-title>
-      <mat-card-subtitle>Hombre Araña</mat-card-subtitle>
+      <mat-card-title> {{ hero.name }} ( {{ hero.age }} )</mat-card-title>
+      <mat-card-subtitle> {{ hero.alias }} </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>Trepar, superfuerza y lanza telaarañas</p>
+      <p *ngFor="let power of hero.powers"> {{ power }} </p>
     </mat-card-content>
     <div class="footer-card">
       <mat-card-actions>
-        <button mat-raised-button color="primary">Detalles</button>
+        <button mat-raised-button color="primary" routerLink="{{hero.id}}">Detalles</button>
       </mat-card-actions>
     </div>
   </mat-card>
