@@ -41,7 +41,7 @@ export class HeroesListComponent implements OnInit {
     this.setLoading(true);
     lastValueFrom(this.heroesService.getHeroes())
       .then((data: HeroInterface[]) => {
-        this.heroesList = data.map(p => new HeroModel(p));
+        this.heroesList = data.map((hero: HeroInterface) => new HeroModel(hero.id, hero.name, hero.alias, hero.powers, hero.age));
         this.heroesListFiltered = [...this.heroesList];
       })
       .catch(e => console.log(e) )
