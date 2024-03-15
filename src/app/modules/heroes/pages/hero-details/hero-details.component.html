@@ -1,18 +1,11 @@
 
 <div class="content">
-
-  <div class="header-edit-hero">
-    <h1> {{ title }} </h1>
-  </div>
-
-  <div class="header-edit-content">
-
+  <app-header-details [title]="title"></app-header-details>
+  <div class="edit-content">
     <div class="heroes-list-loading" *ngIf="loading">
       <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
     </div>
-
     <div class="hero-detail" *ngIf="!loading">
-
       <form [formGroup]="heroForm" class="hero-form">
         <div class="hero-form__content">
           <div class="hero-form_field">
@@ -39,7 +32,7 @@
           <div class="hero-form_field">
             <mat-form-field class="hero-form-full-width">
               <mat-label>Edad</mat-label>
-              <input matInput formControlName="age">
+              <input matInput formControlName="age" maxlength="3">
             </mat-form-field>
           </div>
 
@@ -51,11 +44,4 @@
           <button mat-raised-button (click)="onDeleteHero()" *ngIf="!IsNewHero" color="warn" >Borrar</button>
         </div>
       </form>
-
-
     </div>
-
-
-
-
-

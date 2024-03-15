@@ -12,6 +12,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../../shared/shared.module';
+import { HeaderListComponent } from './components/header-list/header-list.component';
+import { HeaderDetailsComponent } from './components/header-details/header-details.component';
 
 
 
@@ -20,7 +22,9 @@ import { SharedModule } from '../../shared/shared.module';
 @NgModule({
   declarations: [
     HeroesListComponent,
-    HeroDetailsComponent
+    HeroDetailsComponent,
+    HeaderListComponent,
+    HeaderDetailsComponent
   ],
   imports: [
     CommonModule,

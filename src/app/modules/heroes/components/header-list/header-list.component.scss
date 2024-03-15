@@ -1,0 +1,10 @@
+.header-heroes-list {
+  h1 {
+    text-decoration: underline;
+  }
+  margin-bottom: 20px;
+  .header-heroes-list__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

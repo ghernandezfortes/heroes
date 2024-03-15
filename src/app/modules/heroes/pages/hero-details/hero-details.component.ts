@@ -89,15 +89,12 @@ export class HeroDetailsComponent implements OnInit{
     });
   }
 
-
-
   private CreateConfirmDialog(): MatDialogRef<ConfirmDialogComponent> {
     return this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
       data: { title: 'Confirmación', message: '¿Está seguro de que deseas borrar el héroe?' }
     });
   }
-
 
   private setIsNewHero() {
     this.route.params.subscribe(params => {
@@ -125,8 +122,6 @@ export class HeroDetailsComponent implements OnInit{
      })
       .catch(e => console.log(e) )
       .finally(() => this.SetLoading(false));
-
-
   }
 
   private SetHeroValues(hero: HeroInterface): void {
@@ -152,15 +147,12 @@ export class HeroDetailsComponent implements OnInit{
     this.loading = status;
   }
 
-
-
   private returnListHeroes(): void {
     this.router.navigate(['/heroes']).then();
   }
 
   private ShowMessage(message: string, duration: number):void {
     this._snackBar.open(message, "", {duration});
-
 
   }
 

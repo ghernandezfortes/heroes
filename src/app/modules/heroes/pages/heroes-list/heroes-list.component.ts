@@ -18,6 +18,7 @@ export class HeroesListComponent implements OnInit {
   public loading: boolean = false;
   public heroName: string = '';
   private delayTimerEvent: any;
+  public title = 'Listado de héroes';
 
 
   constructor(private heroesService: HeroesService) {}
@@ -51,6 +52,5 @@ export class HeroesListComponent implements OnInit {
   private setLoading(status: boolean): void {
     this.loading = status;
   }
-
 
 }
